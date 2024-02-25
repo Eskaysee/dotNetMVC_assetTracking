@@ -15,12 +15,20 @@ VALUES
     (1, 'SensorDevice', NULL),
     (2, 'TrackerDevice', NULL),
     (3, 'Indoor', 1),
-    (4, 'Outdoor', 2);
+    (4, 'Outdoor', 2),
+    (5, 'Battery', 2),
+    (6, 'Wired', 3);
 
 -- Inserting data into Firmware table
-INSERT INTO Firmware (FirmwareId, Name, Version, ReleaseDate)
+INSERT INTO Firmware (Id, Name, Version, ReleaseDate)
 VALUES
-    (1, 'Watcher', 'v1.0', '2000-01-01'),
-    (2, 'Finder', 'v1.0', '2000-01-01'),
-    (3, 'Watcher', 'v1.1', '2000-03-15'),
-    (4, 'Finder', 'v2.0', '2001-02-03');
+    (1, 'MonitorMyAsset', 'v1.0', '2000-01-01'),
+    (2, 'LocateMyAsset', 'v1.0', '2000-01-01'),
+    (3, 'MonitorMyAsset', 'v1.1', '2000-03-15'),
+    (4, 'LocateMyAsset', 'v2.0', '2001-02-03');
+
+INSERT INTO Device (Id, Name, GroupId, FirmwareId)
+VALUES
+    (1,'Finder',4,2),
+    (2,'Watcher',6,1),
+    (3,'Locator',2,4);
