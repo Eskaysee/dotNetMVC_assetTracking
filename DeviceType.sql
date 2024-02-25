@@ -1,4 +1,5 @@
-﻿CREATE TABLE [dbo].[Type]
+﻿CREATE TABLE [dbo].[DeviceType]
 (
-	[Id] INT NOT NULL PRIMARY KEY
+	[Id] INT NOT NULL PRIMARY KEY,
+	[Name] VARCHAR(255) NOT NULL
 )
