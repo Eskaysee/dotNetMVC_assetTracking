@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TasmSite.Models;
 
@@ -119,7 +116,7 @@ namespace TasmSite.Controllers
             if (firmware.Firmware1.Any())
             {
                 nextId = firmware.Firmware1.ElementAt(0).Id;
-            } 
+            }
             else if (firmware.PreviousId != null)
             {
                 nextId = (int)firmware.PreviousId;
