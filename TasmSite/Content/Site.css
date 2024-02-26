@@ -1,4 +1,26 @@
-﻿#CreateButton a{
+﻿.deleteButton {
+    background-color: red;
+    color: white;
+}
+
+.saveButton {
+    color: cyan;
+    background-color: green;
+    border-color: cyan;
+}
+
+.saveButton:hover {
+    color: magenta;
+    background-color: green;
+    border-color: magenta;
+}
+
+.back2List a {
+    color: red;
+    margin-left: 15%;
+}
+
+#CreateButton a {
     text-decoration: none;
     color: white;
 }
@@ -25,7 +47,7 @@
     color: blue;
 }
 
-#ContactUs {
+.sideBySide {
     display: flex;
     flex-direction: row;
 }

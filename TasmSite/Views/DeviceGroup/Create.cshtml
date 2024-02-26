@@ -39,17 +39,16 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="sideBySide">
+            <div>
+                <input type="submit" value="Create" class="saveButton" />
+            </div>
+            <div class="back2List">
+                @Html.ActionLink("Cancel", "Index")
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

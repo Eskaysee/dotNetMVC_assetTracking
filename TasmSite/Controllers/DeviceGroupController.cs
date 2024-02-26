@@ -94,32 +94,6 @@ namespace TasmSite.Controllers
             return View(deviceGroup);
         }
 
-        // GET: DeviceGroup/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DeviceGroup deviceGroup = db.DeviceGroups.Find(id);
-            if (deviceGroup == null)
-            {
-                return HttpNotFound();
-            }
-            return View(deviceGroup);
-        }
-
-        // POST: DeviceGroup/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            DeviceGroup deviceGroup = db.DeviceGroups.Find(id);
-            db.DeviceGroups.Remove(deviceGroup);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.ReleaseDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Firmware2.Name)
+            Previous Ver.
         </th>
     </tr>
 
@@ -34,12 +34,12 @@
             @Html.DisplayFor(modelItem => item.ReleaseDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Firmware2.Name)
+            @Html.DisplayFor(modelItem => item.Firmware2.Version)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Rollback", "Delete", new { id = item.Id })
+            @Html.ActionLink("Uninstall", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
