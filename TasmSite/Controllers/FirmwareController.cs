@@ -115,6 +115,21 @@ namespace TasmSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Firmware firmware = db.Firmwares.Find(id);
+            int nextId = id;
+            if (firmware.Firmware1.Any())
+            {
+                nextId = firmware.Firmware1.ElementAt(0).Id;
+            } 
+            else if (firmware.PreviousId != null)
+            {
+                nextId = (int)firmware.PreviousId;
+            }
+            var devices = db.Devices.Where(d => d.FirmwareId == id);
+            foreach (Device device in devices)
+            {
+                device.FirmwareId = nextId;
+            }
+            db.SaveChanges();
             db.Firmwares.Remove(firmware);
             db.SaveChanges();
             return RedirectToAction("Index");
