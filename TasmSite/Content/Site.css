@@ -1,4 +1,26 @@
-﻿#title {
+﻿#CreateButton a{
+    text-decoration: none;
+    color: white;
+}
+
+#CreateButton {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+#CreateButton:hover a {
+    text-decoration: none;
+    color: black;
+}
+
+#CreateButton:hover {
+    color: black;
+    background-color: white;
+    outline-color: black;
+}
+
+#title {
     text-align: center;
     color: blue;
 }

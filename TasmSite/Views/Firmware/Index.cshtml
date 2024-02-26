@@ -6,9 +6,6 @@
 
 <h2 id="title">@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -37,9 +34,11 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Rollback", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
+
+<button id="CreateButton">@Html.ActionLink("Create New", "Create")</button>
