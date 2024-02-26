@@ -3,18 +3,29 @@
 }
 <main aria-labelledby="title">
     <h2 id="title">@ViewBag.Title</h2>
-    <h3>@ViewBag.Message</h3>
+    <h3 class="HomeSubTitle">@ViewBag.Message</h3>
 
-    <address>
-        Contact us at the following:
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+    <div id="ContactUs">
+        <div>
+            <address>
+                Contact us at the following:
+                <ul>
+                    <li><strong>Email:</strong><a href="mailto:sihlecalana@gmail.com">Support@example.com</a></li>
+                    <li><strong>Telephone:</strong> 021 6785 0505</li>
+                    <li><strong>Address:</strong> 1 Place St, Suburb</li>
+                </ul>
+            </address>
+        </div>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:sihlecalana@gmail.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+        <div>
+            <form method="post" action="@Url.Action("ResView", "Home")">
+                Want us to contact you? <br/>
+                <input type="text" placeholder="Name" autofocus>
+                <input type="email" placeholder="Email Address">
+                <input type="tel" placeholder="Phone No.: xxx xxx xxxx" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" required><br>
+                <textarea placeholder="What is your query?" class="box"></textarea>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
 </main>

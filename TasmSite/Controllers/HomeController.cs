@@ -15,7 +15,7 @@ namespace TasmSite.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Our Journey";
 
             return View();
         }

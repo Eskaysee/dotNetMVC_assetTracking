@@ -1,5 +1,15 @@
 ﻿#title {
     text-align: center;
+    color: blue;
+}
+
+#ContactUs {
+    display: flex;
+    flex-direction: row;
+}
+
+.HomeSubTitle {
+    color: green;
 }
 
 /* Set padding to keep content from hitting the edges */
