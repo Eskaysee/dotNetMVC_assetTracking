@@ -17,7 +17,8 @@ namespace TasmSite.Controllers
         // GET: Firmware
         public ActionResult Index()
         {
-            return View(db.Firmwares.ToList());
+            var firmwares = db.Firmwares.Include(f => f.Firmware2);
+            return View(firmwares.ToList());
         }
 
         // GET: Firmware/Details/5
@@ -38,6 +39,7 @@ namespace TasmSite.Controllers
         // GET: Firmware/Create
         public ActionResult Create()
         {
+            ViewBag.PreviousId = new SelectList(db.Firmwares, "Id", "Name");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace TasmSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Version,ReleaseDate")] Firmware firmware)
+        public ActionResult Create([Bind(Include = "Id,Name,Version,ReleaseDate,PreviousId")] Firmware firmware)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace TasmSite.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.PreviousId = new SelectList(db.Firmwares, "Id", "Name", firmware.PreviousId);
             return View(firmware);
         }
 
@@ -70,6 +73,7 @@ namespace TasmSite.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.PreviousId = new SelectList(db.Firmwares, "Id", "Name", firmware.PreviousId);
             return View(firmware);
         }
 
@@ -78,7 +82,7 @@ namespace TasmSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Version,ReleaseDate")] Firmware firmware)
+        public ActionResult Edit([Bind(Include = "Id,Name,Version,ReleaseDate,PreviousId")] Firmware firmware)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace TasmSite.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.PreviousId = new SelectList(db.Firmwares, "Id", "Name", firmware.PreviousId);
             return View(firmware);
         }
 

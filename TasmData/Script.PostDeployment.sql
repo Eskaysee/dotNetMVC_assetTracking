@@ -20,12 +20,12 @@ VALUES
     (6, 'Wired', 3);
 
 -- Inserting data into Firmware table
-INSERT INTO Firmware (Id, Name, Version, ReleaseDate)
+INSERT INTO Firmware (Id, Name, Version, ReleaseDate, PreviousId)
 VALUES
-    (1, 'MonitorMyAsset', 'v1.0', '2000-01-01'),
-    (2, 'LocateMyAsset', 'v1.0', '2000-01-01'),
-    (3, 'MonitorMyAsset', 'v1.1', '2000-03-15'),
-    (4, 'LocateMyAsset', 'v2.0', '2001-02-03');
+    (1, 'MonitorMyAsset', 'v1.0', '2000-01-01', NULL),
+    (2, 'LocateMyAsset', 'v1.0', '2000-01-01', NULL),
+    (3, 'MonitorMyAsset', 'v1.1', '2000-03-15', 1),
+    (4, 'LocateMyAsset', 'v2.0', '2001-02-03', 2);
 
 INSERT INTO Device (Id, Name, GroupId, FirmwareId)
 VALUES

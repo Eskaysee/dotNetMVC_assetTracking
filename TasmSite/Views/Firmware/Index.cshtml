@@ -17,7 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ReleaseDate)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Firmware2.Name)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -32,9 +34,12 @@
             @Html.DisplayFor(modelItem => item.ReleaseDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Rollback", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Firmware2.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Rollback", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
