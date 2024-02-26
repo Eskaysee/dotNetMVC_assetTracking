@@ -36,6 +36,32 @@
 
     </dl>
 </div>
+
+<h5>Devices</h5>
+<table class="table">
+    <tr>
+        <th>
+            Device
+        </th>
+        <th>
+            Category
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Devices)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceGroup.Name)
+            </td>
+        </tr>
+    }
+
+</table>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
