@@ -11,20 +11,23 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Category
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
 
-        <dt>
-            Subgroup Of
-        </dt>
+        @if (Model.DeviceGroup2 != null)
+        {
+            <dt>
+                Subgroup Of
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DeviceGroup2.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DeviceGroup2.Name)
+            </dd>
+        }
 
     </dl>
 </div>
@@ -36,33 +39,58 @@
             Device
         </th>
         <th>
+            Type
+        </th>
+        <th>
             Firmware
         </th>
         <th>
-            Firmware Ver.
+            Version
         </th>
         <th>
             Last Update
         </th>
     </tr>
 
-    @foreach (var item in Model.Devices)
+    @helper getDevices(TasmSite.Models.DeviceGroup group)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Firmware.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Firmware.Version)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Firmware.ReleaseDate)
-            </td>
-        </tr>
+        foreach (var item in group.Devices)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceGroup.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firmware.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firmware.Version)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firmware.ReleaseDate)
+                </td>
+            </tr>
+        }
     }
+    @getDevices(Model)
+    @helper getSubs(TasmSite.Models.DeviceGroup group)
+    {
+        foreach (var subgroup in group.DeviceGroup1)
+        {
+            if (subgroup.Devices.Any())
+            {
+                @getDevices(subgroup)
+            }
+            if (subgroup.DeviceGroup1.Any())
+            {
+                @getSubs(subgroup)
+            }
+        }
+    }
+    @getSubs(Model)
 
 </table>
 
