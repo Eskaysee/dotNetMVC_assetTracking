@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DeviceGroup2.Name)
+            Subgroup Of
         </dt>
 
         <dd>
@@ -28,7 +28,45 @@
 
     </dl>
 </div>
+<h5>Devices</h5>
+<table class="table">
+    <tr>
+        <th>
+            Device
+        </th>
+        <th>
+            Firmware
+        </th>
+        <th>
+            Firmware Ver.
+        </th>
+        <th>
+            Last Update
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Devices)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firmware.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firmware.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firmware.ReleaseDate)
+            </td>
+        </tr>
+    }
+
+</table>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -3,10 +3,12 @@
 }
 <main aria-labelledby="title">
     <h2 id="title">@ViewBag.Title</h2>
-    <h3 class="HomeSubTitle">@ViewBag.Message</h3>
+    <h3 class="HomeSubTitle" style="margin-left:15%; margin-right:auto">
+        @ViewBag.Message
+    </h3>
 
     <div id="ContactUs">
-        <div>
+        <div style="margin-left:15%; margin-right:auto">
             <address>
                 Contact us at the following:
                 <ul>
@@ -17,9 +19,9 @@
             </address>
         </div>
 
-        <div>
-            <form method="post" action="@Url.Action("ResView", "Home")">
-                Want us to contact you? <br/>
+        <div style="margin-left:auto; margin-right:15%">
+            <form>
+                <h6>Want Us To Contact You?</h6>
                 <input type="text" placeholder="Name" autofocus>
                 <input type="email" placeholder="Email Address">
                 <input type="tel" placeholder="Phone No.: xxx xxx xxxx" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" required><br>
