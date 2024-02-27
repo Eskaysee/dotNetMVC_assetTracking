@@ -7,6 +7,9 @@ using TasmSite.Models;
 
 namespace TasmSite.Controllers
 {
+    /// <summary>
+    /// Handles the User input from the view, handles request and makes changes to the Firmware model
+    /// </summary>
     public class FirmwareController : Controller
     {
         private TasmEntities db = new TasmEntities();
@@ -18,7 +21,12 @@ namespace TasmSite.Controllers
             return View(firmwares.ToList());
         }
 
-        // GET: Firmware/Details/5
+        /// <summary>
+        /// retrieves the details of the Firmware of the specified id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Details view for the Firmware of the specified id</returns>
+        // HTTP GET request: DeviceGroup/Details/{id}
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,8 +49,6 @@ namespace TasmSite.Controllers
         }
 
         // POST: Firmware/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Version,ReleaseDate,PreviousId")] Firmware firmware)
@@ -75,8 +81,6 @@ namespace TasmSite.Controllers
         }
 
         // POST: Firmware/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Version,ReleaseDate,PreviousId")] Firmware firmware)

@@ -6,6 +6,9 @@ using TasmSite.Models;
 
 namespace TasmSite.Controllers
 {
+    /// <summary>
+    /// Handles the User input from the view, handles request and makes changes to the DeviceGroup model
+    /// </summary>
     public class DeviceGroupController : Controller
     {
         private TasmEntities db = new TasmEntities();
@@ -17,7 +20,12 @@ namespace TasmSite.Controllers
             return View(deviceGroups.ToList());
         }
 
-        // GET: DeviceGroup/Details/5
+        /// <summary>
+        /// retrieves the details of the DeviceGroup of the specified id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Details view for the DeviceGroup of the specified id</returns>
+        // HTTP GET request: DeviceGroup/Details/{id}
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,8 +48,6 @@ namespace TasmSite.Controllers
         }
 
         // POST: DeviceGroup/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,ParentGroupId")] DeviceGroup deviceGroup)
@@ -74,8 +80,6 @@ namespace TasmSite.Controllers
         }
 
         // POST: DeviceGroup/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,ParentGroupId")] DeviceGroup deviceGroup)
