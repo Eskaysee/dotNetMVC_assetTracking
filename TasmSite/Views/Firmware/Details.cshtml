@@ -44,9 +44,20 @@
             Device
         </th>
         <th>
-            Category
+            Categories
         </th>
     </tr>
+
+    @helper getCats(TasmSite.Models.DeviceGroup group) 
+    {
+        <td>
+            @Html.DisplayFor(modelItem => group.Name)
+        </td>
+        if (group.ParentGroupId != null) 
+        {
+            @getCats(group.DeviceGroup2)
+        }
+    }
 
     @foreach (var item in Model.Devices)
     {
@@ -54,9 +65,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeviceGroup.Name)
-            </td>
+            @getCats(item.DeviceGroup)
         </tr>
     }
 
