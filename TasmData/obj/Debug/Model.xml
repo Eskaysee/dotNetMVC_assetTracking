@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="3.5" DspName="Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+	<Header>
+		<CustomData Category="AnsiNulls">
+			<Metadata Name="AnsiNulls" Value="True" />
+		</CustomData>
+		<CustomData Category="QuotedIdentifier">
+			<Metadata Name="QuotedIdentifier" Value="True" />
+		</CustomData>
+		<CustomData Category="CompatibilityMode">
+			<Metadata Name="CompatibilityMode" Value="150" />
+		</CustomData>
+		<CustomData Category="Reference" Type="Assembly">
+			<Metadata Name="LogicalName" Value="TasmData.dll" />
+			<Metadata Name="FileName" Value="C:\USERS\SIHLE\SOURCE\REPOS\TASM\TASMDATA\OBJ\DEBUG\TASMDATA.DLL" />
+			<Metadata Name="AssemblyName" Value="TasmData" />
+			<Metadata Name="PermissionSet" Value="SAFE" />
+			<Metadata Name="Owner" Value="" />
+			<Metadata Name="GenerateSqlClrDdl" Value="True" />
+			<Metadata Name="IsVisible" Value="True" />
+			<Metadata Name="IsModelAware" Value="True" />
+			<Metadata Name="SkipCreationIfEmpty" Value="True" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\TasmData.pdb" />
+		</CustomData>
+		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
+	</Header>
+	<Model>
+		<Element Type="SqlDatabaseOptions">
+			<Property Name="Collation" Value="SQL_Latin1_General_CP1_CI_AS" />
+			<Property Name="IsAnsiNullDefaultOn" Value="True" />
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="IsAnsiWarningsOn" Value="True" />
+			<Property Name="IsArithAbortOn" Value="True" />
+			<Property Name="IsConcatNullYieldsNullOn" Value="True" />
+			<Property Name="IsTornPageProtectionOn" Value="False" />
+			<Property Name="IsFullTextEnabled" Value="True" />
+			<Property Name="PageVerifyMode" Value="3" />
+			<Property Name="DefaultLanguage" Value="" />
+			<Property Name="DefaultFullTextLanguage" Value="" />
+			<Property Name="QueryStoreDesiredState" Value="0" />
+			<Property Name="QueryStoreCaptureMode" Value="1" />
+			<Property Name="QueryStoreStaleQueryThreshold" Value="367" />
+			<Property Name="MaxDop" Value="0" />
+			<Property Name="TemporalHistoryRetentionEnabled" Value="False" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Device].[GroupId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Device]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[DeviceGroup].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[DeviceGroup]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Device].[FirmwareId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Device]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Firmware].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Firmware]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[DeviceGroup].[ParentGroupId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[DeviceGroup]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[DeviceGroup].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[DeviceGroup]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Firmware].[PreviousId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Firmware]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Firmware].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Firmware]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Device].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Device]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[DeviceGroup].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[DeviceGroup]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Firmware].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Firmware]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[Device]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Device].[Id]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="7" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Device].[Name]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Device].[GroupId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Device].[FirmwareId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="3" />
+			<AttachedAnnotation Disambiguator="4" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[DeviceGroup]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[DeviceGroup].[Id]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="8" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[DeviceGroup].[Name]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[DeviceGroup].[ParentGroupId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="5" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[Firmware]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Firmware].[Id]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="9" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Firmware].[Name]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Firmware].[Version]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Firmware].[ReleaseDate]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Firmware].[PreviousId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="6" />
+		</Element>
+	</Model>
+</DataSchemaModel>

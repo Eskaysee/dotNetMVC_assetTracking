@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TasmDataModelStoreContainer" CdmEntityContainer="TasmEntities">
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="TasmDataModel.Device">
+        <MappingFragment StoreEntitySet="Device">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="FirmwareId" ColumnName="FirmwareId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceGroups">
+      <EntityTypeMapping TypeName="TasmDataModel.DeviceGroup">
+        <MappingFragment StoreEntitySet="DeviceGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentGroupId" ColumnName="ParentGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Firmwares">
+      <EntityTypeMapping TypeName="TasmDataModel.Firmware">
+        <MappingFragment StoreEntitySet="Firmware">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+          <ScalarProperty Name="PreviousId" ColumnName="PreviousId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

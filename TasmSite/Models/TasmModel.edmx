@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TasmDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="FirmwareId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ParentGroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="Firmware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReleaseDate" Type="date" Nullable="false" />
+          <Property Name="PreviousId" Type="int" />
+        </EntityType>
+        <Association Name="FK__Device__Firmware__32E0915F">
+          <End Role="Firmware" Type="Self.Firmware" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firmware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="FirmwareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Device__GroupId__31EC6D26">
+          <End Role="DeviceGroup" Type="Self.DeviceGroup" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeviceGro__Paren__33D4B598">
+          <End Role="DeviceGroup" Type="Self.DeviceGroup" Multiplicity="0..1" />
+          <End Role="DeviceGroup1" Type="Self.DeviceGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceGroup1">
+              <PropertyRef Name="ParentGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Firmware__Previo__34C8D9D1">
+          <End Role="Firmware" Type="Self.Firmware" Multiplicity="0..1" />
+          <End Role="Firmware1" Type="Self.Firmware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firmware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Firmware1">
+              <PropertyRef Name="PreviousId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TasmDataModelStoreContainer">
+          <EntitySet Name="Device" EntityType="Self.Device" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceGroup" EntityType="Self.DeviceGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firmware" EntityType="Self.Firmware" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Device__Firmware__32E0915F" Association="Self.FK__Device__Firmware__32E0915F">
+            <End Role="Firmware" EntitySet="Firmware" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Device__GroupId__31EC6D26" Association="Self.FK__Device__GroupId__31EC6D26">
+            <End Role="DeviceGroup" EntitySet="DeviceGroup" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeviceGro__Paren__33D4B598" Association="Self.FK__DeviceGro__Paren__33D4B598">
+            <End Role="DeviceGroup" EntitySet="DeviceGroup" />
+            <End Role="DeviceGroup1" EntitySet="DeviceGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Firmware__Previo__34C8D9D1" Association="Self.FK__Firmware__Previo__34C8D9D1">
+            <End Role="Firmware" EntitySet="Firmware" />
+            <End Role="Firmware1" EntitySet="Firmware" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TasmDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="FirmwareId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Firmware" Relationship="Self.FK__Device__Firmware__32E0915F" FromRole="Device" ToRole="Firmware" />
+          <NavigationProperty Name="DeviceGroup" Relationship="Self.FK__Device__GroupId__31EC6D26" FromRole="Device" ToRole="DeviceGroup" />
+        </EntityType>
+        <EntityType Name="DeviceGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParentGroupId" Type="Int32" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__Device__GroupId__31EC6D26" FromRole="DeviceGroup" ToRole="Device" />
+          <NavigationProperty Name="DeviceGroup1" Relationship="Self.FK__DeviceGro__Paren__33D4B598" FromRole="DeviceGroup" ToRole="DeviceGroup1" />
+          <NavigationProperty Name="DeviceGroup2" Relationship="Self.FK__DeviceGro__Paren__33D4B598" FromRole="DeviceGroup1" ToRole="DeviceGroup" />
+        </EntityType>
+        <EntityType Name="Firmware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReleaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PreviousId" Type="Int32" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__Device__Firmware__32E0915F" FromRole="Firmware" ToRole="Device" />
+          <NavigationProperty Name="Firmware1" Relationship="Self.FK__Firmware__Previo__34C8D9D1" FromRole="Firmware" ToRole="Firmware1" />
+          <NavigationProperty Name="Firmware2" Relationship="Self.FK__Firmware__Previo__34C8D9D1" FromRole="Firmware1" ToRole="Firmware" />
+        </EntityType>
+        <Association Name="FK__Device__Firmware__32E0915F">
+          <End Role="Firmware" Type="Self.Firmware" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firmware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="FirmwareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Device__GroupId__31EC6D26">
+          <End Role="DeviceGroup" Type="Self.DeviceGroup" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeviceGro__Paren__33D4B598">
+          <End Role="DeviceGroup" Type="Self.DeviceGroup" Multiplicity="0..1" />
+          <End Role="DeviceGroup1" Type="Self.DeviceGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceGroup1">
+              <PropertyRef Name="ParentGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Firmware__Previo__34C8D9D1">
+          <End Role="Firmware" Type="Self.Firmware" Multiplicity="0..1" />
+          <End Role="Firmware1" Type="Self.Firmware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firmware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Firmware1">
+              <PropertyRef Name="PreviousId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TasmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Devices" EntityType="Self.Device" />
+          <EntitySet Name="DeviceGroups" EntityType="Self.DeviceGroup" />
+          <EntitySet Name="Firmwares" EntityType="Self.Firmware" />
+          <AssociationSet Name="FK__Device__Firmware__32E0915F" Association="Self.FK__Device__Firmware__32E0915F">
+            <End Role="Firmware" EntitySet="Firmwares" />
+            <End Role="Device" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Device__GroupId__31EC6D26" Association="Self.FK__Device__GroupId__31EC6D26">
+            <End Role="DeviceGroup" EntitySet="DeviceGroups" />
+            <End Role="Device" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeviceGro__Paren__33D4B598" Association="Self.FK__DeviceGro__Paren__33D4B598">
+            <End Role="DeviceGroup" EntitySet="DeviceGroups" />
+            <End Role="DeviceGroup1" EntitySet="DeviceGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Firmware__Previo__34C8D9D1" Association="Self.FK__Firmware__Previo__34C8D9D1">
+            <End Role="Firmware" EntitySet="Firmwares" />
+            <End Role="Firmware1" EntitySet="Firmwares" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TasmDataModelStoreContainer" CdmEntityContainer="TasmEntities">
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="TasmDataModel.Device">
+              <MappingFragment StoreEntitySet="Device">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="FirmwareId" ColumnName="FirmwareId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceGroups">
+            <EntityTypeMapping TypeName="TasmDataModel.DeviceGroup">
+              <MappingFragment StoreEntitySet="DeviceGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentGroupId" ColumnName="ParentGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firmwares">
+            <EntityTypeMapping TypeName="TasmDataModel.Firmware">
+              <MappingFragment StoreEntitySet="Firmware">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="PreviousId" ColumnName="PreviousId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

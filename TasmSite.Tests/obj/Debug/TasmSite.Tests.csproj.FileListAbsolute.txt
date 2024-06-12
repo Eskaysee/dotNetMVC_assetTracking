@@ -1,0 +1,2 @@
+C:\Users\sihle\source\repos\Tasm\TasmSite.Tests\obj\Debug\TasmSite.Tests.csproj.AssemblyReference.cache
+C:\Users\sihle\source\repos\Tasm\TasmSite.Tests\obj\Debug\TasmSite.Tests.csproj.CoreCompileInputs.cache

@@ -1,0 +1,10 @@
+C:\Users\sihle\source\repos\Tasm\TasmData\bin\Debug\TasmData.dacpac
+C:\Users\sihle\source\repos\Tasm\TasmData\bin\Debug\TasmData.dll
+C:\Users\sihle\source\repos\Tasm\TasmData\bin\Debug\TasmData.pdb
+C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\TasmData.sqlproj.AssemblyReference.cache
+C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\TasmData.dll
+C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\TasmData.pdb
+C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\Model.xml
+C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\refactor.xml
+C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\postdeploy.sql
+C:\Users\sihle\source\repos\Tasm\TasmData\obj\Debug\predeploy.sql

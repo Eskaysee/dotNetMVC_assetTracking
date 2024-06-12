@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc34e22cf4514524ba8b33603ad8c933" Name="Diagram1">
+        <EntityTypeShape EntityType="TasmDataModel.Device" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasmDataModel.DeviceGroup" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasmDataModel.Firmware" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="TasmDataModel.FK__Device__Firmware__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="TasmDataModel.FK__Device__GroupId__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="TasmDataModel.FK__DeviceGro__Paren__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="TasmDataModel.FK__Firmware__Previo__34C8D9D1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
